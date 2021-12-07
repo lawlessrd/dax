@@ -81,8 +81,6 @@ def transform_to_bids(XNAT, DIRECTORY, project, BIDS_DIR, xnat_tag, LOGGER):
                 subj_idx = subj_idx + 1
                 LOGGER.info("\t>Removing XNAT subject %s folder" % (subj))
                 os.rmdir(os.path.join(DIRECTORY, proj, subj))
-    BIDS_PROJ_DIR = os.path.join(BIDS_DIR, project)
-    dataset_description_file(BIDS_PROJ_DIR, XNAT, project)
 
 
 def bids_yaml(XNAT, BIDS_DIR, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_file, sess_idx, subj_idx, xnat_tag):
