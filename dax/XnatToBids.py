@@ -85,7 +85,7 @@ def transform_to_bids(XNAT, DIRECTORY, project, BIDS_DIR, xnat_tag, LOGGER):
     dataset_description_file(BIDS_PROJ_DIR, XNAT, project)
 
 
-def bids_yaml(XNAT, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_file, sess_idx, subj_idx, xnat_tag):
+def bids_yaml(XNAT, BIDS_DIR, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_file, sess_idx, subj_idx, xnat_tag):
     """
     Main method to put the scans in the BIDS datatype folder, create json
     sidecar and remane filenames based on the BIDS format.
@@ -195,6 +195,10 @@ def bids_yaml(XNAT, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_f
                                         sess_idx, subj_idx, series_description)
         os.rename(os.path.join(res_dir, nii_file), os.path.join(res_dir, bids_fname))
         shutil.move(os.path.join(res_dir, bids_fname), data_type_dir)
+
+        #Generate the dataset_description.json
+        BIDS_PROJ_DIR = os.path.join(BIDS_DIR, project)
+        dataset_description_file(BIDS_PROJ_DIR, XNAT, project)
 
 
 def yaml_bids_filename(XNAT, data_type, scan_id, subj, sess, project, scan_file, xnat_mapping_type, sess_idx, subj_idx,
