@@ -56,7 +56,7 @@ def transform_to_bids(XNAT, DIRECTORY, project, BIDS_DIR, xnat_tag, LOGGER):
                                         LOGGER.info("  * Scan File %s" % (scan_file))
                                         nii_file = scan_file
                                         # Call the main BIDS function that is compatible with yaml
-                                        bids_yaml(XNAT, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_file,
+                                        bids_yaml(XNAT, BIDS_DIR, project, scan_id, subj, res_dir, scan_file, uri, sess, nii_file,
                                                   sess_idx, subj_idx, xnat_tag)
                                         # Create the BIDS directory
                                         if not os.path.exists(os.path.join(BIDS_DIR, project)):
