@@ -194,9 +194,9 @@ def bids_yaml(XNAT, BIDS_DIR, project, scan_id, subj, res_dir, scan_file, uri, s
         os.rename(os.path.join(res_dir, nii_file), os.path.join(res_dir, bids_fname))
         shutil.move(os.path.join(res_dir, bids_fname), data_type_dir)
 
-        #Generate the dataset_description.json
-        BIDS_PROJ_DIR = os.path.join(BIDS_DIR, project)
-        dataset_description_file(BIDS_PROJ_DIR, XNAT, project)
+    #Generate the dataset_description.json
+    BIDS_PROJ_DIR = os.path.join(res_dir, project)
+    dataset_description_file(res_dir, XNAT, project)
 
 
 def yaml_bids_filename(XNAT, data_type, scan_id, subj, sess, project, scan_file, xnat_mapping_type, sess_idx, subj_idx,
